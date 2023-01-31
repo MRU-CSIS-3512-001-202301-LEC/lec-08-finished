@@ -4,13 +4,14 @@
 <?php
 require 'db/DatabaseHelper.php';
 
+// ❓❓ What's going on here? I though requires were just a "copy/paste"!
 $config = require 'db/config.php';
 
 $db_helper = new DatabaseHelper($config);
 
 $query = <<<QUERY
     SELECT ch.name AS cheese
-    FROM cheese AS ch 
+    FROM cheese AS ch
 QUERY;
 
 $results = $db_helper->run($query);

@@ -10,6 +10,7 @@ class DatabaseHelper
 
     public function __construct($config)
     {
+        // ❓❓ What are the null coalescing ops used for here?
         $host = $config['host'] ?? '127.0.0.1';
         $port = $config['port'] ?? '3306';
         $dbname = $config['dbname'];
@@ -27,7 +28,7 @@ class DatabaseHelper
 
     public function close_connection()
     {
-        echo "killin' that connection</br>";
+        // ❓❓ When do we need to use $this-> ?
         $this->connection = null;
     }
 

@@ -9,7 +9,7 @@
 <body>
     <ul>
         <?php foreach ($results as $result) : ?>
-            <li><?= $result['cheese'] ?> (<?= $result['type'] ?>)</li>
+            <li><?= $result['cheese'] ?> </li>
         <?php endforeach ?>
     </ul>
 </body>

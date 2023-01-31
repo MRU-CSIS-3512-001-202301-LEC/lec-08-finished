@@ -10,7 +10,7 @@ DROP DATABASE IF EXISTS `cheese_db`;
 CREATE DATABASE `cheese_db`;
 
 USE `cheese_db`;
-
+ 
 --
 -- Table structure for table `cheese`
 --

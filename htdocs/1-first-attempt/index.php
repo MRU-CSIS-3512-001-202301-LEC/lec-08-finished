@@ -3,27 +3,33 @@
 
 <?php
 
-// ⚠️ dsn = data source name
+// ❓❓ What was this for again?
 $dsn = "mysql:host=127.0.0.1;port=3306;dbname=cheese_db;charset=utf8mb4";
 
+// ❓❓ Why the try-catch?
 try {
-  $pdo = new PDO($dsn, "root", "mariadb");
+    // ❓❓ What's this guy's job in life?  
+    $pdo = new PDO($dsn, "root", "mariadb");
 } catch (PDOException $e) {
-  die($e->getMessage()); // ⚠️ this provides a bit too much info
+    // ❓❓ What does die do again?   
+    die($e->getMessage()); // ⚠️ this provides a bit too much info
 }
 
-// ⚠️ hint: try your queries out FIRST in CLI or in your GUI tool
-// ⚠️ hint: use heredoc strings: https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc
-
-// ⚠️ doesn't have to be QUERY...could be BOB, or FNORT, or ...
+// ❓❓ Why use a heredoc?
 $query = <<<QUERY
     SELECT ch.name AS cheese
     FROM cheese AS ch 
 QUERY;
 
+// ❓❓ What does that arrow mean?
 $results = $pdo->query($query);
 
+// ❓❓ Why are we doing this?
 $pdo = null;
+
+
+// ❓❓ What are the 4 general steps going on here?
+// ❓❓ What's our end goal of all this code?
 
 ?>
 
@@ -31,16 +37,18 @@ $pdo = null;
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Cheese</title>
+    <meta charset="UTF-8">
+    <title>Cheese</title>
 </head>
 
 <body>
-  <ul>
-    <?php foreach ($results as $result) : ?>
-      <li><?= $result['cheese'] ?> </li>
-    <?php endforeach ?>
-  </ul>
+    <ul>
+        <? // ❓❓ what's going on here? 
+        ?>
+        <?php foreach ($results as $result) : ?>
+            <li><?= $result['cheese'] ?> </li>
+        <?php endforeach ?>
+    </ul>
 </body>
 
 </html>

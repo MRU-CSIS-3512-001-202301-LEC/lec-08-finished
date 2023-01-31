@@ -3,24 +3,25 @@
 
 <?php
 
+// ❓❓ Do we need to capitalize things this way?
 class DatabaseHelper
 {
-
+    // ❓❓ What's this called again?
     public $connection;
 
+    // ❓❓ And this? What's its job?
     public function __construct()
     {
         $dsn = "mysql:host=127.0.0.1;port=3306;dbname=cheese_db;charset=utf8mb4";
         try {
             $this->connection = new PDO($dsn, "root", "mariadb");
         } catch (PDOException $e) {
-            die("DB problem. Belly up I go."); // ⚠️ you'd likely log this and alert a tech in real life
+            die("DB problem. Belly up I go.");
         }
     }
 
     public function close_connection()
     {
-        echo "killin' that connection</br>";
         $this->connection = null;
     }
 
@@ -49,6 +50,9 @@ QUERY;
 $results = $db_helper->run($query);
 
 $db_helper->close_connection();
+
+// ❓❓ What benefit(s) does the helper provide?
+// ❓❓ What problems does the current Helper have?
 
 ?>
 
