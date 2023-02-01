@@ -29,7 +29,7 @@ $store_name = $_GET['store_name'];
 // ❓❓ What can we do about that?
 $query = <<<QUERY
     SELECT ch.name AS cheese, cl.name AS type
-    FROM cheese ch INNER JOIN classification cl 
+    FROM cheese ch INNER JOIN classification cl  
     ON ch.classification_id = cl.id
     INNER JOIN inventory inv
     ON ch.id = inv.cheese_id

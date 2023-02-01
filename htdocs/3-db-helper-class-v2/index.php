@@ -2,84 +2,20 @@
 ?>
 
 <?php
+require 'db/DatabaseHelper.php';
 
-class DatabaseHelper
-{
-
-    public $connection;
-
-    public function __construct($config)
-    {
-        // ❓❓ What are the null coalescing ops used for here?
-        $host = $config['host'] ?? '127.0.0.1';
-        $port = $config['port'] ?? '3306';
-        $dbname = $config['dbname'];
-        $charset = $config['charset'] ?? 'utf8mb4';
-        $username = $config['username'];
-        $password = $config['password'];
-
-        $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=$charset";
-        try {
-            $this->connection = new PDO($dsn, $username, $password);
-        } catch (PDOException $e) {
-            die("DB problem. Belly up I go.");
-        }
-    }
-
-    public function close_connection()
-    {
-        // ❓❓ When do we need to use $this-> ?
-        $this->connection = null;
-    }
-
-    public function run($sql)
-    {
-        $statement = $this->connection->prepare($sql);
-
-        $statement->execute();
-
-        return $statement;
-    }
-}
-
-?>
-
-
-<?php
-
-$config = [
-    "username" => "root",
-    "password" => "mariadb",
-    "dbname" => "cheese_db"
-];
+// ❓❓ What's going on here? I though requires were just a "copy/paste"!
+$config = require 'db/config.php';
 
 $db_helper = new DatabaseHelper($config);
 
 $query = <<<QUERY
-    SELECT ch.name AS cheese
-    FROM cheese AS ch 
+    SELECT name AS cheese
+    FROM cheese 
 QUERY;
 
 $results = $db_helper->run($query);
 
 $db_helper->close_connection();
 
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Cheese</title>
-</head>
-
-<body>
-    <ul>
-        <?php foreach ($results as $result) : ?>
-            <li><?= $result['cheese'] ?> </li>
-        <?php endforeach ?>
-    </ul>
-</body>
-
-</html>
+require 'views/index.view.php';

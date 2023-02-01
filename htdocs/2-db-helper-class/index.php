@@ -4,6 +4,7 @@
 <?php
 
 // ❓❓ Do we need to capitalize things this way?
+// ❓❓ Where should this actually go?
 class DatabaseHelper
 {
     // ❓❓ What's this called again?
@@ -22,6 +23,7 @@ class DatabaseHelper
 
     public function close_connection()
     {
+        // ❓❓ When do we need to use $this-> ?
         $this->connection = null;
     }
 
@@ -39,20 +41,20 @@ class DatabaseHelper
 
 
 <?php
-
+// ❓❓ What benefit(s) does the helper provide?
+// ❓❓ What problems does the current form of the Helper have?
 $db_helper = new DatabaseHelper();
 
 $query = <<<QUERY
-    SELECT ch.name AS cheese
-    FROM cheese AS ch 
+    SELECT name AS cheese
+    FROM cheese 
 QUERY;
 
 $results = $db_helper->run($query);
 
 $db_helper->close_connection();
 
-// ❓❓ What benefit(s) does the helper provide?
-// ❓❓ What problems does the current Helper have?
+
 
 ?>
 

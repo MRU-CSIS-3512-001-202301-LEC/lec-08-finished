@@ -9,8 +9,8 @@ $config = require 'db/config.php';
 $db_helper = new DatabaseHelper($config);
 
 $query = <<<QUERY
-    SELECT ch.name AS cheese
-    FROM cheese AS ch
+    SELECT name AS cheese
+    FROM cheese 
 QUERY;
 
 // ❓❓ What do you suppose $results IS? Take a guess.
@@ -19,11 +19,17 @@ $results = $db_helper->run($query);
 // let's confirm whether your guess is on-target or not.... 
 // die(var_dump($results)); // ⚠️ this readout is a bit misleading
 
-// ❓❓ If we fetch one of these results, what do we see? LOOK CAREFULLY!
+
+
+// ❓❓ Let's try a query that just returns ONE result and see what changes.
+//   ❓❓ First off, how would be alter our query to just return on result?
+//   ❓❓ Next off, how do we actually get the next result from $results?
+//       die(var_dump($results->?what method goes here?()));
+//   ❓❓ What do we see in our dump? LOOK CAREFULLY!
 // ❓❓ What seems odd here? 
 // ❓❓ Do you feel this is confusing? How do we grab something more reasonable?
 // ❓❓ What will happen if we change our table aliases?
-die(var_dump($results->fetch()));
+
 
 $db_helper->close_connection();
 
@@ -55,6 +61,7 @@ $db_helper->close_connection();
 
 <?php // ⚠️ gotcha: why doesn' this work?
 ?>
+
 <!-- <h3>Take 3: using a fetchAll()</h3>
 <?php $results_as_array = $results->fetchAll() ?>
 <ul>
@@ -62,3 +69,5 @@ $db_helper->close_connection();
         <li><?= $result['cheese'] ?> </li>
     <?php endforeach ?>
 </ul> -->
+<?php // // ❗❗❗ Don't let JP go to the next bit until he talks about htop 
+?>

@@ -12,13 +12,13 @@ try {
     $pdo = new PDO($dsn, "root", "mariadb");
 } catch (PDOException $e) {
     // ❓❓ What does die do again?   
-    die($e->getMessage()); // ⚠️ this provides a bit too much info
+    die($e->getMessage()); // // ❓❓ What info does this provide?
 }
 
 // ❓❓ Why use a heredoc?
 $query = <<<QUERY
-    SELECT ch.name AS cheese
-    FROM cheese AS ch 
+    SELECT name AS cheese
+    FROM cheese 
 QUERY;
 
 // ❓❓ What does that arrow mean?

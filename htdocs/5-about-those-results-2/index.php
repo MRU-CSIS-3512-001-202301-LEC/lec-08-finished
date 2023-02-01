@@ -8,7 +8,9 @@ $config = require 'db/config.php';
 
 $db_helper = new DatabaseHelper($config);
 
-// ❓❓ What if we only get ONE thing back? How do things change?
+// ❓❓ Let's try a query that just returns ONE result and see what changes.
+//   ❓❓ First off, how would be alter our query to just return on result?
+
 $query = <<<QUERY
     SELECT ch.name AS cheese
     FROM cheese AS ch
@@ -17,8 +19,14 @@ QUERY;
 
 $results = $db_helper->run($query);
 
+//   ❓❓ Next off, how do we actually get the next result from $results?
+//       die(var_dump($results->?what method goes here?()));
+//   ❓❓ What do we see in our dump? LOOK CAREFULLY!
+
+
+// die(var_dump($results->?? ??()));
+
 // ❓❓ What will be the difference between fetch() and fetchALl() now?
-// die(var_dump($results->fetchAll()));
 
 $db_helper->close_connection();
 
@@ -26,8 +34,9 @@ $db_helper->close_connection();
 
 <?php // ⚠️ take 1: just fetch the one thing and use it 
 ?>
-<h3>Fetching one result</h3>
-<h4><?= $results->fetch()['cheese'] ?></h4>
+<!-- <h3>Fetching one result</h3>
+<h4><?= "" //$results->fetch()['cheese'] 
+    ?></h4> -->
 
 
 <?php // ⚠️ take 2: keep using a loop! 
