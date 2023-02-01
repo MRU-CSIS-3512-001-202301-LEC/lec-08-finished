@@ -10,9 +10,7 @@ $config = require 'db/config.php';
 $db_helper = new DatabaseHelper($config);
 
 
-// ❓❓ 
-// what would change if you wanted to have a 1 whenever
-// something not in 1 to 5 was entered?...
+// ❓❓ what does the null coalescing op do here?
 $ch_type_id = $_GET['type'] ?? 1;
 $query = <<<QUERY
     SELECT ch.name as cheese, cl.name as type
@@ -24,11 +22,14 @@ QUERY;
 // try http://127.0.0.1:8080/6-outside-data-dangerously
 // try http://127.0.0.1:8080/6-outside-data-dangerously/?type=1
 // try http://127.0.0.1:8080/6-outside-data-dangerously/?type=2 
-// 💀 try http://127.0.0.1:8080/6-outside-data-dangerously/?type=1%20or%201=1 
-// 💀💀💀 try http://127.0.0.1:8080/6-outside-data-dangerously/?type=1;drop+table+cheese
+// try http://127.0.0.1:8080/6-outside-data-dangerously/?type=5 
+// try http://127.0.0.1:8080/6-outside-data-dangerously/?type=6 ⚠️
+// try http://127.0.0.1:8080/6-outside-data-dangerously/?type=blorp 💀
+// try http://127.0.0.1:8080/6-outside-data-dangerously/?type=1%20or%201=1 💀
+// try http://127.0.0.1:8080/6-outside-data-dangerously/?type=1;drop+table+cheese 💀💀💀 
 
 
-// die(var_dump($query));
+die(var_dump($query));
 
 $results = $db_helper->run($query);
 

@@ -24,7 +24,6 @@ class DatabaseHelper
 
     public function close_connection()
     {
-
         $this->connection = null;
     }
 

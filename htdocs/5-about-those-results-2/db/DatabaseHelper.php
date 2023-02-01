@@ -16,7 +16,7 @@ class DatabaseHelper
 
         $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=$charset";
         try {
-            $this->connection = new PDO($dsn, $username, $password);
+            $this->connection = new PDO($dsn, $username, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
         } catch (PDOException $e) {
             die("DB problem. Belly up I go.");
         }
@@ -24,7 +24,6 @@ class DatabaseHelper
 
     public function close_connection()
     {
-        echo "killin' that connection</br>";
         $this->connection = null;
     }
 

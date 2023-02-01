@@ -28,11 +28,11 @@ class DatabaseHelper
         $this->connection = null;
     }
 
-    public function run($sql)
+    public function run($sql, $params = [])
     {
         $statement = $this->connection->prepare($sql);
 
-        $statement->execute();
+        $statement->execute($params);
 
         return $statement;
     }
