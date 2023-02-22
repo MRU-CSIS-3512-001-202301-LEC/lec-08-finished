@@ -29,7 +29,8 @@ QUERY;
 
 
 $results = $db_helper->run($query, [":cheese_id" => $ch_type_id]);
-// $results = $db_helper->run($query, [":cheese_id" => 1]);  // BTW, this works, Diego. 😎
+
+// $results = $db_helper->run($query, [":cheese_id" => 4]);  // BTW, this works, Diego. 😎
 
 $db_helper->close_connection();
 

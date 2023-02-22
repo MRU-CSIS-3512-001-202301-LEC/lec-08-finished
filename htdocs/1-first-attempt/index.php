@@ -6,13 +6,13 @@
 // ❓❓ What was this for again?
 $dsn = "mysql:host=127.0.0.1;port=3306;dbname=cheese_db;charset=utf8mb4";
 
-// ❓❓ Why the try-catch?
+// ❓❓ Why the try-catch? 
 try {
-    // ❓❓ What's this guy's job in life?  
-    $pdo = new PDO($dsn, "root", "mariadb");
+  // ❓❓ What's this guy's job in life?  
+  $pdo = new PDO($dsn, "root", "mariadb");
 } catch (PDOException $e) {
-    // ❓❓ What does die do again?   
-    die($e->getMessage()); // // ❓❓ What info does this provide?
+  // ❓❓ What does die do again?   
+  die($e->getMessage()); // // ❓❓ What info does this provide?
 }
 
 // ❓❓ Why use a heredoc?
@@ -37,18 +37,18 @@ $pdo = null;
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Cheese</title>
+  <meta charset="UTF-8">
+  <title>Cheese</title>
 </head>
 
 <body>
-    <ul>
-        <? // ❓❓ what's going on here? 
-        ?>
-        <?php foreach ($results as $result) : ?>
-            <li><?= $result['cheese'] ?> </li>
-        <?php endforeach ?>
-    </ul>
+  <ul>
+    <? // ❓❓ what's going on here? 
+    ?>
+    <?php foreach ($results as $result) : ?>
+      <li><?= $result['cheese'] ?> </li>
+    <?php endforeach ?>
+  </ul>
 </body>
 
 </html>
